@@ -15,15 +15,15 @@ jobs:
         id: cache
       - name: 종속 모듈들 설치
         if: steps.cache.outputs.cache-hit != 'true'
-        run: cd backend && npm install
+        run: npm install
       - name: lint 체크
-        run: cd backend && npm run lint
+        run: npm run lint
       - name: 빌드 체크
-        run: cd backend && npm run build
+        run: npm run build
       - name: 단위 테스트 체크
-        run: cd backend && npm run test
+        run: npm run test
       - name: 통합 테스트 체크
-        run: cd backend && npm run test:e2e
+        run: npm run test:e2e
 
   CD:
     if: github.ref == 'refs/heads/master'
